@@ -35,7 +35,6 @@ export const AppHeader = () => {
 
     const handleSelect = (value) => {
         setCoin(crypto.find(c => c.id === value))
-        console.log(value)
         setIsModalOpen(true)
     }
 
@@ -43,7 +42,7 @@ export const AppHeader = () => {
         <Layout.Header style={headerStyle}>
             <Select
                 style={{width: 250}}
-                placeholder="press / to open"
+                value="press / to open"
                 open={select}
                 onSelect={handleSelect}
                 onClick={() => setSelect(prev => !prev)}
@@ -66,8 +65,12 @@ export const AppHeader = () => {
                     footer={null}>
                 <CoinInfoModal coin={coin}/>
             </Modal>
-            <Drawer width={600} title="Basic Drawer" onClose={() => setIsDrawerOpen(false)} open={isDrawerOpen}>
-                <AddAssetForm />
+            <Drawer destroyOnClose={true}
+                    width={600}
+                    title="Basic Drawer"
+                    onClose={() => setIsDrawerOpen(false)}
+                    open={isDrawerOpen}>
+                <AddAssetForm onClose={() => setIsDrawerOpen(false)}/>
             </Drawer>
         </Layout.Header>
     );
