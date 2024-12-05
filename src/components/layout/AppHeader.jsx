@@ -42,7 +42,7 @@ export const AppHeader = () => {
         <Layout.Header style={headerStyle}>
             <Select
                 style={{width: 250}}
-                value="press / to open"
+                placeholder="press / to open"
                 open={select}
                 onSelect={handleSelect}
                 onClick={() => setSelect(prev => !prev)}
